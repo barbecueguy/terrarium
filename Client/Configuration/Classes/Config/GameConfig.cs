@@ -175,9 +175,9 @@ namespace Terrarium.Configuration
         /// </summary>
         public static bool UseLargeGraphics
         {
-            get { return _largeGraphicsMode.Getter(); }
+            get { return _largeGraphicsMode.Value; }
 
-            set { _largeGraphicsMode.Setter(value); }
+            set { _largeGraphicsMode.Value = value; }
         }
 
         /// <summary>
@@ -187,9 +187,9 @@ namespace Terrarium.Configuration
         /// </summary>
         public static bool DemoMode
         {
-            get { return _demoMode.Getter(); }
+            get { return _demoMode.Value; }
 
-            set { _demoMode.Setter(value); }
+            set { _demoMode.Value = value; }
         }
 
         /// <summary>
@@ -224,9 +224,9 @@ namespace Terrarium.Configuration
         /// </summary>
         public static bool DrawScreen
         {
-            get { return _drawScreen.Getter(); }
+            get { return _drawScreen.Value; }
 
-            set { _drawScreen.Setter(value); }
+            set { _drawScreen.Value = value; }
         }
 
         /// <summary>
@@ -236,9 +236,9 @@ namespace Terrarium.Configuration
         /// </summary>
         public static bool DestinationLines
         {
-            get { return _destinationLines.Getter(); }
+            get { return _destinationLines.Value; }
 
-            set { _destinationLines.Setter(value); }
+            set { _destinationLines.Value = value; }
         }
 
         /// <summary>
@@ -248,9 +248,9 @@ namespace Terrarium.Configuration
         /// </summary>
         public static bool BackgroundGrid
         {
-            get { return _backgroundGrid.Getter(); }
+            get { return _backgroundGrid.Value; }
 
-            set { _backgroundGrid.Setter(value); }
+            set { _backgroundGrid.Value = value; }
         }
 
         /// <summary>
@@ -260,9 +260,9 @@ namespace Terrarium.Configuration
         /// </summary>
         public static bool BoundingBoxes
         {
-            get { return _boundingBoxes.Getter(); }
+            get { return _boundingBoxes.Value; }
 
-            set { _boundingBoxes.Setter(value); }
+            set { _boundingBoxes.Value = value; }
         }
 
         /// <summary>
@@ -273,9 +273,9 @@ namespace Terrarium.Configuration
         /// </summary>
         public static bool EnableNat
         {
-            get { return _enableNat.Getter(); }
+            get { return _enableNat.Value; }
 
-            set { _enableNat.Setter(value); }
+            set { _enableNat.Value = value; }
         }
 
         /// <summary>
@@ -285,9 +285,9 @@ namespace Terrarium.Configuration
         /// </summary>
         public static bool UseConfigForDiscovery
         {
-            get { return _discoveryOverride.Getter(); }
+            get { return _discoveryOverride.Value; }
 
-            set { _discoveryOverride.Setter(value); }
+            set { _discoveryOverride.Value = value; }
         }
 
         /// <summary>
@@ -624,9 +624,9 @@ namespace Terrarium.Configuration
         /// </summary>
         public static bool UseSimpleScreenSaver
         {
-            get { return _useSimpleScreenSaver.Getter(); }
+            get { return _useSimpleScreenSaver.Value; }
 
-            set { _useSimpleScreenSaver.Setter(value); }
+            set { _useSimpleScreenSaver.Value = value; }
         }
 
         /// <summary>
@@ -635,8 +635,8 @@ namespace Terrarium.Configuration
         /// </summary>
         public static bool StartFullscreen
         {
-            get { return _startFullscreen.Getter(); }
-            set { _startFullscreen.Setter(value); }
+            get { return _startFullscreen.Value; }
+            set { _startFullscreen.Value = value; }
         }
 
         /// <summary>
@@ -646,8 +646,8 @@ namespace Terrarium.Configuration
         /// </summary>
         public static bool ScreenSaverSpanMonitors
         {
-            get { return _screenSaverSpanMonitors.Getter(); }
-            set { _screenSaverSpanMonitors.Setter(value); }
+            get { return _screenSaverSpanMonitors.Value; }
+            set { _screenSaverSpanMonitors.Value = value; }
         }
 
         /// <summary>
@@ -655,8 +655,8 @@ namespace Terrarium.Configuration
         /// </summary>
         public static bool SkipVersionCheck
         {
-            get { return _skipVersionCheck.Getter(); }
-            set { _skipVersionCheck.Setter(value); }
+            get { return _skipVersionCheck.Value; }
+            set { _skipVersionCheck.Value = value; }
         }
 
         /// <summary>

@@ -2,6 +2,8 @@
 //      Copyright (c) Microsoft Corporation.  All rights reserved.                                                          
 //------------------------------------------------------------------------------
 
+using System.Linq;
+
 namespace Terrarium.Configuration
 {
     /// <summary>
@@ -75,13 +77,7 @@ namespace Terrarium.Configuration
         /// <returns>True if the string matches one of the countries/regions in the list, false otherwise.</returns>
         public static bool Validate(string country)
         {
-            foreach (var availableCountry in Countries)
-            {
-                if (!Equals(availableCountry, country)) continue;
-                return true;
-            }
-
-            return false;
+			return Countries.Any(availableCountry => availableCountry == country);
         }
     }
 }

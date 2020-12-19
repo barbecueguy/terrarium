@@ -14,20 +14,46 @@ namespace Terrarium.Configuration
     /// </summary>
     public class CachedBooleanConfig
     {
+        private bool _loaded;
+        private bool _value;
+
         /// <summary>
         ///  Field representing the name of the setting in the config file
         /// </summary>
-        private readonly string _booleanName;
+        public string Name { get; private set; }
 
         /// <summary>
-        ///  Field representing the string or config representation of the setting
+        ///  Used to retrieve the value of this boolean config setting.
+        ///  If the value has not been processed before then it is 
+        ///  retrieved and processed, else it is returned from cache.
         /// </summary>
-        private string _booleanString;
-
+        /// <returns>True/False value of the current setting.</returns>
+        ///
         /// <summary>
-        ///  Field representing the boolean value of the setting
+        ///  Used to set the value of a setting.  This method will create
+        ///  the setting if it doesn't exist, or update it otherwise.
         /// </summary>
-        private bool _booleanValue;
+        /// <param name="value">New True/False value for the setting.</param>
+        public bool Value
+        {
+            get
+            {
+                if (!_loaded)
+                {
+                    _loaded = true;
+                    var stringValue = GameConfig.GetSetting(Name);
+                    if (bool.TryParse(stringValue, out var parsed))
+                        _value = parsed;
+                }
+
+                return _value;
+            }
+            set
+            {
+                _value = value;
+                GameConfig.SetSetting(Name, _value.ToString());
+            }
+        }
 
         /// <summary>
         ///  Initialize a new CachedBooleanConfig given the name of the configuration
@@ -46,47 +72,8 @@ namespace Terrarium.Configuration
         /// <param name="defaultValue">Initial default value.</param>
         public CachedBooleanConfig(string name, bool defaultValue)
         {
-            _booleanName = name;
-            _booleanValue = defaultValue;
-        }
-
-        /// <summary>
-        ///  Used to retrieve the value of this boolean config setting.
-        ///  If the value has not been processed before then it is 
-        ///  retrieved and processed, else it is returned from cache.
-        /// </summary>
-        /// <returns>True/False value of the current setting.</returns>
-        public bool Getter()
-        {
-            if (_booleanString == null)
-            {
-                _booleanString = GameConfig.GetSetting(_booleanName);
-
-                try
-                {
-                    _booleanValue = bool.Parse(_booleanString);
-                }
-                catch
-                {
-                    // By default it will be set to it's default value
-                    // or whatever the value was before the config
-                    // setting was changed
-                }
-            }
-
-            return _booleanValue;
-        }
-
-        /// <summary>
-        ///  Used to set the value of a setting.  This method will create
-        ///  the setting if it doesn't exist, or update it otherwise.
-        /// </summary>
-        /// <param name="value">New True/False value for the setting.</param>
-        public void Setter(bool value)
-        {
-            _booleanString = value.ToString();
-            _booleanValue = value;
-            GameConfig.SetSetting(_booleanName, _booleanString);
+            Name = name;
+            _value = defaultValue;
         }
     }
 }
